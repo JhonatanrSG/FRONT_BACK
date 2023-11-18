@@ -19,39 +19,18 @@ def create_layout():
                         value=''  # Agrega un valor predeterminado aquí
                     ),
                     html.Button('Ejecutar Consulta', id='button-sql', n_clicks=0, className='btn btn-primary mt-3'),
-                ], className='card-body', style={'text-align': 'center', 'margin-bottom': '20px'})
+                ], className='card-body', style={'textAlign': 'center', 'marginBottom': '20px'})
             ], className='card', style={'maxWidth': '400px', 'margin': 'auto'}),
-        ], className='row', style={'display': 'flex', 'justify-content': 'center', 'margin-bottom': '20px'}),
+        ], className='row', style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '20px'}),
 
-        html.Div([
-            # Contenedor para la tabla de resultados
-            html.Div([
-                dcc.Loading(
-                    id="loading-table",
-                    type="default",
-                    children=[
-                        html.Table([
-                            html.Thead([
-                                html.Tr([
-                                    html.Th("Tabla de Consultas", style={'padding': '10px'})
-                                ])
-                            ]),
-                            html.Tbody([
-                                html.Tr([
-                                    dcc.Markdown(id='tabla-ventas', dangerously_allow_html=True, className='table table-striped table-hover')
-                                ])
-                            ])
-                        ], className='table')
-                    ]
-                )
-            ], className='card', style={'maxWidth': '50%', 'marginRight': '10px', 'margin-bottom': '20px'}),
-        ], className='row', style={'display': 'flex', 'justify-content': 'center'}),
+        html.Div(id='tabla-ventas'),  # Aquí agregamos el componente para mostrar la tabla
 
         html.Div([
             # Contenedor para la gráfica y la sentencia SQL
             html.Div([
                 # Dividir en dos columnas usando Bootstrap (col-md-6)
                 html.Div([
+                    # Usar dcc.Graph para mostrar el gráfico
                     dcc.Graph(id='graph'),
                 ], className='card', style={'maxWidth': '50%', 'marginRight': '10px'}),
 
